@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+
+    .TextColor {
+        @apply text-gray-600 dark:text-gray-300; 
+    }
+
+    .FlexBetween {
+        @apply flex justify-between items-center;
+    }
+
+    .FlexCenter {
+        @apply flex justify-center items-center;
+    }
+
+    .TransitionNavIcon {
+        @apply transition-all ease-in;
+    }
+
+    .NavLinkHover {
+        @apply border-b pb-1 border-transparent transition-all hover:border-gray-600;
+    }
+
+    .NavList li a {
+        @apply flex p-2 hover:bg-violet-100 dark:hover:bg-transparent hover:text-violet-600;
+    }
+
+    .ScrollFixed {
+        @apply h-full overflow-hidden;
+    }
+
+    .SidebarDropdownLists {
+        @apply flex flex-col gap-3 mt-2 overflow-hidden pr-5 transition-all duration-300 border-r border-gray-500;
+    }
+
+    .PlacesOfInterestBtn {
+        @apply border border-gray-300 dark:border-gray-500 rounded-2xl mt-2 py-2 flex justify-center gap-2 items-center hover:bg-purple-700 dark:hover:bg-transparent dark:hover:border-violet-600 dark:hover:text-violet-600 hover:text-white transition-all duration-300;
+    }
+
+    .BottomNav .active {
+        @apply text-violet-600
+    }
+}
+
+@font-face {
+    font-family: iranyekan;
+    src: url("../Fonts/iranyekan/ttf/iranyekanwebregular\(fanum\).ttf");
+}
+
+* {
+    font-family: iranyekan;
+}
+
+[x-cloak] {
+    display: none !important;
+}
+
+.text-ltr {
+    direction: ltr;
+}
+
+.text-rtl {
+    direction: rtl;
+}
+
+.imgPadding {
+    padding-top: 56%;
+}
+
+.SliderContainer {
+    position: relative;
+}
+
+.SliderContainer .swiper-button-next,
+.SliderContainer .swiper-button-prev {
+    @apply flex justify-center items-center bg-white bg-opacity-50 border border-gray-300 backdrop-blur-[2px] rounded-2xl py-[30px] px-[14px];
+}
+
+.SliderContainer .swiper-button-next::after,
+.SliderContainer .swiper-button-prev::after {
+    @apply text-lg text-gray-500 font-bold;
+}
+
+.SliderContainer .swiper-button-next {
+    @apply -right-4 hidden md:flex;
+}
+
+.SliderContainer .swiper-button-prev {
+    @apply -left-4 hidden md:flex;
+}
+
+.SecondSlider .swiper-slide {
+    @apply w-80 TextColor;
+}
+
+#payment{
+    background-position: 8px 50%;
+    padding-right: 14px;
+}

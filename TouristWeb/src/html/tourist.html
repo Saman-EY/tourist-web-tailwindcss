@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style/swiper-bundle.min.css">
+    <link rel="stylesheet" href="../style/final.css">
+    <title>Tourist</title>
+</head>
+
+<body class="bg-[#f2f2f2] dark:bg-gray-800 ">
+
+
+    <!-- NAVBAR -->
+    <nav class="bg-white shadow-sm dark:bg-gray-900" x-data="OpenSidebar">
+        <div class="container mx-auto flex justify-between p-4 w-full">
+            <!-- HAMBURGER ICON -->
+            <div class="FlexBetween md:hidden cursor-pointer TextColor" @click="handleMenu()">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-7" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </div>
+            <!-- NAVLINKS -->
+            <ul class=" gap-5 items-center  TextColor hidden md:flex " x-data="NavDropdown()">
+                <li><a class="NavLinkHover" href="#">خانه</a></li>
+                <li class="relative">
+                    <span class="flex gap-1 items-center mt-1 NavLinkHover cursor-pointer" @click="NavDrop(1)">
+                        تورهای داخلی
+                        <!-- dropdown icon  -->
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-all"
+                            :class="(drop1 == 1) ? 'rotate-180' : ''" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </span>
+                    <!-- FIRST NAV DROPDOWN  -->
+                    <ul class="bg-white absolute z-20 top-10 flex flex-col text-sm border border-gray-300  rounded-lg w-40 NavList dark:bg-gray-900"
+                        x-cloak x-show="drop1 == 1" @click.away="drop1 = 0" x-transition.opacity.duration.300>
+                        <li class="overflow-hidden rounded-t-lg"><a href="#">تور کیش</a></li>
+                        <!-- dropdownBtn  -->
+                        <li class="relative group">
+                            <span class="FlexBetween p-2 cursor-pointer hover:bg-violet-100 dark:hover:bg-transparent hover:text-violet-600">
+                                تور کوهنوردی
+                                <!-- icon  -->
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
+                                    fill="currentColor">
+                                    <path fill-rule="evenodd"
+                                        d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </span>
+                            <!-- dropdownContent  -->
+                            <ul
+                                class="absolute hidden overflow-hidden top-0 right-full w-32 rounded-lg bg-white dark:bg-gray-900 border border-gray-300 group-hover:block">
+                                <li><a href="#">رشته کوه البرز</a></li>
+                                <li><a href="#">رشته کوه زاگرس</a></li>
+                                <li><a href="#">کوه دماوند</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">تور قشم</a></li>
+                        <li class="overflow-hidden rounded-b-lg"><a href="#">تور اصفهان</a></li>
+                    </ul>
+                </li>
+                <li class="relative">
+                    <span class="flex gap-1 items-center mt-1 NavLinkHover cursor-pointer" @click="NavDrop(2)">
+                        تورهای خارجی
+                        <!-- dropdown icon  -->
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-all"
+                            :class="(drop2 == 2) ? 'rotate-180' : ''" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </span>
+                    <!-- SECOND NAV DROPDOWN  -->
+                    <ul class="bg-white dark:bg-gray-900 absolute top-10 flex flex-col z-20 text-sm border border-gray-200  NavList rounded-lg w-40 "
+                        x-cloak x-show="drop2 == 2" @click.away="drop2 = 0" x-transition.opacity.duration.300>
+                        <li class="overflow-hidden rounded-t-lg"><a href="#">تور آنتالیا</a> </li>
+                        <li class="relative group">
+                            <span class="FlexBetween p-2 cursor-pointer hover:bg-violet-100 dark:hover:bg-transparent hover:text-violet-600">
+                                تور قاره ای
+                                <!-- icon  -->
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
+                                    fill="currentColor">
+                                    <path fill-rule="evenodd"
+                                        d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </span>
+                            <!-- dropdownContent  -->
+                            <ul
+                                class="absolute hidden overflow-hidden top-0 right-full w-32 rounded-lg bg-white dark:bg-gray-900 border border-gray-300 group-hover:block">
+                                <li><a href="#">اروپا</a></li>
+                                <li><a href="#">آمریکا</a></li>
+                                <li><a href="#">آفریقا</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">تور هند</a> </li>
+                        <li class=" rounded-b-lg relative group">
+                            <span class="FlexBetween p-2 cursor-pointer hover:bg-violet-100 dark:hover:bg-gray-900 hover:text-violet-600">
+                                تور کره
+                                <!-- icon  -->
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
+                                    fill="currentColor">
+                                    <path fill-rule="evenodd"
+                                        d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </span>
+                            <!-- dropdownContent  -->
+                            <ul
+                                class="absolute hidden overflow-hidden top-0 right-full w-32 rounded-lg bg-white dark:bg-gray-900 border border-gray-300 group-hover:block">
+                                <li><a href="#">کره جنوبی</a></li>
+                                <li><a href="#">کره شمالی</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><a class="NavLinkHover" href="#">مجله</a></li>
+                <li><a class="NavLinkHover" href="#">افتخارات</a></li>
+            </ul>
+            <div class="FlexBetween gap-4">
+                <!-- DARKMODE ICON  -->
+                <span class="p-1 w-8 h-8 animate-wiggle TransitionNavIcon  rounded-full cursor-pointer hover:shadow-lg darkmodeIcons"
+                    x-data="HandleDarkMode">
+                    <!-- moon  -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden moon TextColor"   fill="none" viewBox="0 0 24 24"
+                        @click="setLight()" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                    </svg>
+                    <!-- sun -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden sun text-yellow-400"   fill="none" viewBox="0 0 24 24"
+                        @click="setDark()" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </svg>
+                </span>
+                <!-- FLAG  -->
+                <span class="w-8 h-8 TransitionNavIcon rounded-full FlexBetween  cursor-pointer hover:shadow-lg">
+                    <img class="w-full " src="../img/rtl.png" alt="">
+                </span>
+                <!-- PROFILE  -->
+                <span
+                    class="w-10 h-10 TransitionNavIcon rounded-full overflow-hidden  cursor-pointer p-1 hover:shadow-lg">
+                    <img class="w-full h-full rounded-full" src="../img/prof.jpg" alt="">
+                </span>
+            </div>
+        </div>
+        <!-- SIDEBAR BACKGROUND -->
+        <div class="fixed inset-0 z-10  bg-gray-500 dark:bg-opacity-20 dark:bg-gray-700 bg-opacity-50 backdrop-blur-sm" x-cloak x-show="overlay"
+            x-transition.opacity.duration.300>
+        </div>
+        <!-- SIDEBAR -->
+        <div class="bg-gray-100 dark:bg-gray-800 fixed h-full right-0 top-0 z-20 w-64 p-5" x-cloak x-show="menu"
+            @click.away="closeMenuAndOverlay()" x-transition:enter="transition-all ease-in duration-300"
+            x-transition:enter-start="-right-64" x-transition:enter-end="right-0"
+            x-transition:leave="transition-all ease-in duration-300" x-transition:leave-start="right-0"
+            x-transition:leave-end="-right-64">
+            <ul class="flex flex-col gap-4 mt-2 TextColor">
+                <li><a class="flex" href="#">خانه</a></li>
+
+                <!-- dropdownTitle -->
+                <li x-data="{SidebarDrop1 : false}" @click.away="SidebarDrop1 = false">
+                    <span class="FlexBetween" x-on:click="SidebarDrop1 = true">
+                        تور های داخلی
+                        <!-- icon -->
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-all" viewBox="0 0 20 20"
+                            fill="currentColor" :class="(SidebarDrop1) ? '-rotate-90' : ''">
+                            <path fill-rule="evenodd"
+                                d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </span>
+                    <!-- dropdown -->
+                    <ul class="SidebarDropdownLists " x-bind:class="(SidebarDrop1) ? 'pt-2 max-h-96' : 'max-h-0'">
+                        <li><a href="#">تور کیش</a></li>
+                        <!-- dropdownTitle -->
+                        <li x-data="{SidebarDrop2 : false}" @click.away="SidebarDrop2 = false">
+                            <span class="FlexBetween" x-on:click="SidebarDrop2 = true">
+                                تور های کوهنوردی
+                                <!-- icon -->
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-all"
+                                    viewBox="0 0 20 20" fill="currentColor" :class="(SidebarDrop2) ? '-rotate-90' : ''">
+                                    <path fill-rule="evenodd"
+                                        d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </span>
+                            <!-- dropdown -->
+                            <ul class="SidebarDropdownLists" :class="(SidebarDrop2) ? 'pt-2 max-h-96' : 'max-h-0'">
+                                <li><a href="#">رشته کوه البرز</a></li>
+                                <li><a href="#">رشته کوه زاگرس</a></li>
+                                <li><a href="#">رشته کوه سبلان</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">تور قشم</a></li>
+                        <li><a href="#">تور اصفهان</a></li>
+                    </ul>
+                </li>
+
+                <li x-data="{SidebarDrop3 : false}" @click.away="SidebarDrop3 = false">
+                    <span class="FlexBetween" x-on:click="SidebarDrop3 = true">
+                        تور های خارجی
+                        <!-- icon -->
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-all" viewBox="0 0 20 20"
+                            fill="currentColor" :class="(SidebarDrop3) ? '-rotate-90' : ''">
+                            <path fill-rule="evenodd"
+                                d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </span>
+
+                    <!-- dropdown -->
+                    <ul class="SidebarDropdownLists" x-bind:class="(SidebarDrop3) ? 'pt-2 max-h-96' : 'max-h-0'">
+                        <li><a href="#">تور آنتالیا</a></li>
+                        <!-- dropdownTitle -->
+                        <li x-data="{SidebarDrop4 : false}" @click.away="SidebarDrop4 = false">
+                            <span class="FlexBetween" x-on:click="SidebarDrop4 = true">
+                                تور های قاره ای
+                                <!-- icon -->
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-all"
+                                    viewBox="0 0 20 20" fill="currentColor" :class="(SidebarDrop4) ? '-rotate-90' : ''">
+                                    <path fill-rule="evenodd"
+                                        d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </span>
+                            <!-- dropdown -->
+                            <ul class="SidebarDropdownLists" :class="(SidebarDrop4) ? 'pt-2 max-h-96' : 'max-h-0'">
+                                <li><a href="#">اروپا</a></li>
+                                <li><a href="#">آمریکا</a></li>
+                                <li><a href="#">آفریقا</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">تور هند</a></li>
+                        <!-- dropdowntitle -->
+                        <li x-data="{SidebarDrop5 : false}" @click.away="SidebarDrop5 = false">
+                            <span class="FlexBetween" x-on:click="SidebarDrop5 = true">
+                                تور کره
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-all"
+                                    viewBox="0 0 20 20" fill="currentColor" :class="(SidebarDrop5) ? '-rotate-90' : ''">
+                                    <path fill-rule="evenodd"
+                                        d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </span>
+                            <!-- dropdown -->
+                            <ul class="SidebarDropdownLists" :class="(SidebarDrop5) ? 'pt-2 max-h-96' : 'max-h-0'">
+                                <li><a href="#">کره شمالی</a></li>
+                                <li><a href="#">کره جنوبی</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="#" class="flex">مجله</a></li>
+                <li><a href="#" class="flex">افتخارات</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="">
+        <!-- slider and banner  -->
+        <section class="grid grid-cols-12 gap-6 mt-6 container mx-auto px-4">
+            <!-- SWIPER SLIDER  -->
+            <div class="col-span-12  sm:col-span-8">
+                <div class="SliderContainer h-full">
+                    <div class="swiper text-ltr h-full TopSlider rounded-lg ">
+                        <div class="swiper-wrapper h-full">
+                            <a href="#" class="swiper-slide h-auto">
+                                <img class="w-full h-full" src="../img/slide1.jpg" alt="SliderImg">
+                            </a>
+                            <a href="#" class="swiper-slide h-auto">
+                                <img class="w-full h-full" src="../img/slide2.jpg" alt="SliderImg">
+                            </a>
+                            <a href="#" class="swiper-slide h-auto">
+                                <img class="w-full h-full" src="../img/slide3.jpg" alt="SliderImg">
+                            </a>
+                            <a href="#" class="swiper-slide h-auto">
+                                <img class="w-full h-full" src="../img/slide2.jpg" alt="SliderImg">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="swiper-button-next hidden "></div>
+                    <div class="swiper-button-prev hidden "></div>
+                </div>
+            </div>
+            <!-- BANNER -->
+            <div class="col-span-12 sm:col-span-4 flex sm:flex-col gap-6 ">
+                <div class="rounded-lg overflow-hidden flex-1 w-full">
+                    <a href="#">
+                        <img class="w-full h-full" src="../img/slide4.jpg" alt="banner">
+                    </a>
+                </div>
+                <div class="rounded-lg overflow-hidden flex-1 w-full">
+                    <a href="#">
+                        <img class="w-full h-full" src="../img/2.jpg" alt="banner">
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- PLACES OF INTEREST -->
+        <section class="mt-12 grid grid-cols-1 lg:grid-cols-4 container mx-auto px-4">
+
+            <!-- TITLE  -->
+            <div class="flex justify-between lg:col-span-1 w-full items-end lg:justify-center lg:items-center mb-4  ">
+                <div class="TextColor flex flex-col gap-2 lg:gap-4 items-center justify-center pl-4 h-full">
+                    <p class="lg:text-3xl lg:font-bold">مکان های دیدنی</p>
+                    <p class="text-sm lg:text-2xl">تورهای تفریحی</p>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-20 w-20 hidden lg:block" viewBox="0 0 20 20"
+                        fill="currentColor">
+                        <path fill-rule="evenodd"
+                            d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                            clip-rule="evenodd" />
+                    </svg>
+                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 TextColor cursor-pointer lg:hidden"
+                    viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm.707-10.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L9.414 11H13a1 1 0 100-2H9.414l1.293-1.293z"
+                        clip-rule="evenodd" />
+                </svg>
+            </div>
+            <!-- SECOND SLIDER -->
+            <div class="swiper w-full text-ltr  SecondSlider lg:col-span-3 ">
+                <div class="swiper-wrapper w-80">
+                    <!-- CARD -->
+                    <div class="swiper-slide">
+                        <div class="bg-white dark:bg-gray-900 my-2 justify-between rounded-xl overflow-hidden border dark:border-gray-500 shadow-lg">
+                            <!-- IMG & discount -->
+                            <div class="relative imgPadding group cursor-pointer">
+                                <img class="w-full h-full absolute inset-0 " src="../img/1.jpg" alt="">
+                                <div
+                                    class="absolute top-5 -right-8 flex transition-all bg-red-600 p-2  rounded-l-xl text-white w-20 group-hover:right-0">
+                                    20%
+                                </div>
+                            </div>
+                            <!-- DES  -->
+                            <div class="p-4 flex flex-col gap-3 text-rtl TextColor">
+                                <p class="font-bold line-clamp-1"> جنگل آمازون</p>
+                                <p class="text-sm  line-clamp-3 leading-6 ">تصویری که میبینید متعلق به جنگل های آمازون
+                                    است که یکی از جاذبه های
+                                    گردشگری قاره
+                                    اروپاست</p>
+                                <button class="PlacesOfInterestBtn ">
+                                    عکس های بیشتر
+                                    <!-- ICON -->
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- CARD -->
+                    <div class="swiper-slide">
+                        <div class="bg-white dark:bg-gray-900 my-2 justify-between rounded-xl overflow-hidden border dark:border-gray-500 shadow-lg">
+                            <!-- IMG & discount -->
+                            <div class="relative imgPadding group cursor-pointer">
+                                <img class="w-full h-full absolute inset-0 " src="../img/2.jpg" alt="">
+                                <div
+                                    class="absolute top-5 -right-8 flex transition-all bg-red-600 p-2  rounded-l-xl text-white w-20 group-hover:right-0">
+                                    20%
+                                </div>
+                            </div>
+                            <!-- DES  -->
+                            <div class="p-4 flex flex-col gap-3 text-rtl">
+                                <p class="font-bold line-clamp-1"> جنگل آمازون</p>
+                                <p class="text-sm  line-clamp-3 leading-6 ">تصویری که میبینید متعلق به جنگل های آمازون
+                                    است که یکی از جاذبه های
+                                    گردشگری قاره
+                                    اروپاست</p>
+                                <button class="PlacesOfInterestBtn ">
+                                    عکس های بیشتر
+                                    <!-- ICON -->
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- CARD -->
+                    <div class="swiper-slide">
+                        <div class="bg-white dark:bg-gray-900 my-2 justify-between rounded-xl overflow-hidden border dark:border-gray-500 shadow-lg">
+                            <!-- IMG & discount -->
+                            <div class="relative imgPadding group cursor-pointer">
+                                <img class="w-full h-full absolute inset-0 " src="../img/3.jpg" alt="">
+                                <div
+                                    class="absolute top-5 -right-8 flex transition-all bg-red-600 p-2  rounded-l-xl text-white w-20 group-hover:right-0">
+                                    20%
+                                </div>
+                            </div>
+                            <!-- DES  -->
+                            <div class="p-4 flex flex-col gap-3 text-rtl TextColor">
+                                <p class="font-bold line-clamp-1"> جنگل آمازون</p>
+                                <p class="text-sm  line-clamp-3 leading-6 ">تصویری که میبینید متعلق به جنگل های آمازون
+                                    است که یکی از جاذبه های
+                                    گردشگری قاره
+                                    اروپاست</p>
+                                <button class="PlacesOfInterestBtn ">
+                                    عکس های بیشتر
+                                    <!-- ICON -->
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- CARD -->
+                    <div class="swiper-slide">
+                        <div class="bg-white dark:bg-gray-900 my-2 justify-between rounded-xl overflow-hidden border dark:border-gray-500 shadow-lg">
+                            <!-- IMG & discount -->
+                            <div class="relative imgPadding group cursor-pointer">
+                                <img class="w-full h-full absolute inset-0 " src="../img/4.jpg" alt="">
+                                <div
+                                    class="absolute top-5 -right-8 flex transition-all bg-red-600 p-2  rounded-l-xl text-white w-20 group-hover:right-0">
+                                    20%
+                                </div>
+                            </div>
+                            <!-- DES  -->
+                            <div class="p-4 flex flex-col gap-3 text-rtl TextColor">
+                                <p class="font-bold line-clamp-1"> جنگل آمازون</p>
+                                <p class="text-sm  line-clamp-3 leading-6 ">تصویری که میبینید متعلق به جنگل های آمازون
+                                    است که یکی از جاذبه های
+                                    گردشگری قاره
+                                    اروپاست</p>
+                                <button class="PlacesOfInterestBtn ">
+                                    عکس های بیشتر
+                                    <!-- ICON -->
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Most visited places  -->
+        <section class="mt-12 container mx-auto px-4">
+            <!-- TITLE  -->
+            <h3 class="TextColor font-bold text-xl mb-4">مکان های پر بازدید</h3>
+            <!-- CARDS -->
+            <div class="grid grid-cols-1 gap-6 sm:grid-cols-3">
+                <!-- CARD -->
+                <div class="flex flex-col rounded-2xl shadow-lg  overflow-hidden bg-white dark:bg-gray-600">
+                    <!-- IMG -->
+                    <div class="relative imgPadding group cursor-pointer overflow-hidden">
+                        <img class="w-full h-full absolute inset-0  group-hover:scale-125 transition-all  duration-500 "
+                            src="../img/1.jpg" alt="">
+                        <div
+                            class="absolute inset-0 justify-center items-center transition-all ease-in bg-slate-900 bg-opacity-50  opacity-0 flex group-hover:opacity-100">
+                            <a class="bg-violet-600 text-white rounded-xl px-4 py-2 hover:bg-violet-800 transition-all"
+                                href="#">ادامه مطلب</a>
+                        </div>
+                    </div>
+
+                    <!-- INFO -->
+                    <div class="TextColor flex flex-col gap-3 mt-2 p-4">
+                        <p class="font-bold"> جنگل آمازون</p>
+                        <p class="text-sm">
+                            تصویری که میبینید متعلق به جنگل های آمازون
+                            است که یکی از جاذبه های
+                            گردشگری قاره
+                            اروپاست
+                        </p>
+                        <a class="text-purple-600 dark:text-purple-500 text-base font-bold" href="#">ادامه مطلب...</a>
+                    </div>
+                </div>
+                <!-- CARD -->
+                <div class="flex flex-col rounded-2xl shadow-lg  overflow-hidden bg-white dark:bg-gray-600">
+                    <!-- IMG -->
+                    <div class="relative imgPadding group cursor-pointer overflow-hidden">
+                        <img class="w-full h-full absolute inset-0  group-hover:scale-125 transition-all  duration-500 "
+                            src="../img/2.jpg" alt="">
+                        <div
+                            class="absolute inset-0 justify-center items-center transition-all ease-in bg-slate-900 bg-opacity-50  opacity-0 flex group-hover:opacity-100">
+                            <a class="bg-violet-600 text-white rounded-xl px-4 py-2 hover:bg-violet-800 transition-all"
+                                href="#">ادامه مطلب</a>
+                        </div>
+                    </div>
+
+                    <!-- INFO -->
+                    <div class="TextColor flex flex-col gap-3 mt-2 p-4">
+                        <p class="font-bold"> جنگل آمازون</p>
+                        <p class="text-sm">
+                            تصویری که میبینید متعلق به جنگل های آمازون
+                            است که یکی از جاذبه های
+                            گردشگری قاره
+                            اروپاست
+                        </p>
+                        <a class="text-purple-600 dark:text-purple-500 text-base font-bold" href="#">ادامه مطلب...</a>
+                    </div>
+                </div>
+                <!-- CARD -->
+                <div class="flex flex-col rounded-2xl shadow-lg  overflow-hidden bg-white dark:bg-gray-600">
+                    <!-- IMG -->
+                    <div class="relative imgPadding group cursor-pointer overflow-hidden">
+                        <img class="w-full h-full absolute inset-0  group-hover:scale-125 transition-all  duration-500 "
+                            src="../img/3.jpg" alt="">
+                        <div
+                            class="absolute inset-0 justify-center items-center transition-all ease-in bg-slate-900 bg-opacity-50  opacity-0 flex group-hover:opacity-100">
+                            <a class="bg-violet-600 text-white rounded-xl px-4 py-2 hover:bg-violet-800 transition-all"
+                                href="#">ادامه مطلب</a>
+                        </div>
+                    </div>
+
+                    <!-- INFO -->
+                    <div class="TextColor flex flex-col gap-3 mt-2 p-4">
+                        <p class="font-bold"> جنگل آمازون</p>
+                        <p class="text-sm">
+                            تصویری که میبینید متعلق به جنگل های آمازون
+                            است که یکی از جاذبه های
+                            گردشگری قاره
+                            اروپاست
+                        </p>
+                        <a class="text-purple-600 dark:text-purple-500 text-base font-bold" href="#">ادامه مطلب...</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- FORM  -->
+        <section class="bg-gray-300 dark:bg-gray-900  mt-8  FlexCenter py-8">
+            <!-- FORM CARD  -->
+            <div
+                class="bg-white dark:bg-gray-800 w-full max-w-3xl mx-2 rounded-lg overflow-hidden sm:max-w-xl md:max-w-3xl lg:max-w-6xl">
+                <p class="text-center py-4 TextColor font-bold border-b border-gray-300">درخواست سفر</p>
+
+                <!-- FIRST SEC  -->
+                <div class="mt-4 px-4 flex flex-col sm:flex-row sm:FlexCenter sm:flex-wrap ">
+                    <!-- USERS  -->
+                    <div
+                        class="mb-4 border-b border-gray-300 flex-1 sm:border-b-0 sm: sm:mb-0 sm:border-l sm:border-gray-300 sm:pl-3">
+                        <p class="text-xs font-bold TextColor mb-3 sm:mb-3 ">تعداد نفرات</p>
+                        <div class="flex w-full gap-4 pb-4 sm:pb-0 lg:max-w-md mx-auto">
+                            <div class="relative flex-1">
+                                <input type="radio" name="users"
+                                    class="absolute top-0 right-0 invisible label-checked:bg-white label-checked:text-purple-700 dark:label-checked:bg-slate-500 dark:label-checked:border-slate-500 dark:label-checked:text-white"
+                                    id="one">
+                                <label for="one"
+                                    class="FlexCenter py-1 text-lg font-bold cursor-pointer border-2 rounded-lg border-purple-600 bg-purple-700 text-white transition-all ease-in ">1</label>
+                            </div>
+                            <div class="relative flex-1">
+                                <input type="radio" name="users"
+                                    class="absolute top-0 right-0 invisible label-checked:bg-white label-checked:text-purple-700 dark:label-checked:bg-slate-500 dark:label-checked:border-slate-500 dark:label-checked:text-white"
+                                    id="two">
+                                <label for="two"
+                                    class="FlexCenter py-1 text-lg font-bold cursor-pointer border-2 rounded-lg border-purple-600 bg-purple-700 text-white transition-all ease-in ">2</label>
+                            </div>
+                            <div class="relative flex-1">
+                                <input type="radio" name="users"
+                                    class="absolute top-0 right-0 invisible label-checked:bg-white label-checked:text-purple-700 dark:label-checked:bg-slate-500 dark:label-checked:border-slate-500 dark:label-checked:text-white"
+                                    id="three">
+                                <label for="three"
+                                    class="FlexCenter py-1 text-lg font-bold cursor-pointer border-2 rounded-lg border-purple-600 bg-purple-700 text-white transition-all ease-in ">3</label>
+                            </div>
+                            <div class="relative flex-1">
+                                <input type="radio" name="users"
+                                    class="absolute top-0 right-0 invisible label-checked:bg-white label-checked:text-purple-700 dark:label-checked:bg-slate-500 dark:label-checked:border-slate-500 dark:label-checked:text-white"
+                                    id="four">
+                                <label for="four"
+                                    class=" FlexCenter py-1 text-lg font-bold cursor-pointer border-2 rounded-lg border-purple-600 bg-purple-700 text-white transition-all ease-in ">4</label>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- CustomUsers  -->
+                    <div
+                        class="pb-6 border-b-2 border-dashed border-gray-300  mb-4 flex-1 sm:pb-0 sm:border-none sm:mb-0 sm:pr-3">
+                        <p class="text-xs font-bold TextColor mb-3">نفرات دلخواه</p>
+                        <div class="relative focus-within:text-purple-600 dark:text-gray-400 dark:focus-within:text-purple-600">
+                            <input type="number"
+                                class="w-full dark:bg-slate-700 rounded-lg  pr-8 h-10 border-gray-300 dark:border-gray-700 focus:border-gray-300 focus:ring-0 focus:shadow-md TextColor"
+                                placeholder="5" value="5">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                class="w-6 h-6 absolute transition-all duration-300  top-2 right-1" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
+                            </svg>
+                        </div>
+                    </div>
+                    <!-- border in sm  -->
+                    <div class="hidden sm:block border-t-2 border-dashed border-gray-300 my-4 w-full"></div>
+                </div>
+
+                <!-- SECOND SEC  -->
+                <div class="flex flex-col sm:flex-row TextColor">
+                    <!-- PERSONAL INFO  -->
+                    <div class="px-4 mb-4  flex-1 sm:border-l border-gray-300 dark:border-gray-700 relative">
+                        <h3 class="font-bold TextColor mb-3">اطلاعات شخصی</h3>
+                        <div class="flex flex-col gap-4 border-b border-gray-300 pb-4 sm:border-b-0  ">
+                            <input type="text"
+                                class="w-full dark:bg-slate-700  rounded-lg h-10 text-sm border-gray-300 dark:border-gray-700 focus:border-gray-300 focus:ring-0 focus:shadow-md placeholder:TextColor"
+                                placeholder="نام">
+                            <input type="text"
+                                class="w-full dark:bg-slate-700  rounded-lg h-10 text-sm border-gray-300 dark:border-gray-700 focus:border-gray-300 focus:ring-0 focus:shadow-md placeholder:TextColor"
+                                placeholder="نام خانوادگی">
+                            <input type="email"
+                                class="w-full dark:bg-slate-700  rounded-lg h-10 peer border-2 valid:border-green-600 invalid:border-red-600 text-sm border-gray-300 focus:border-gray-300 focus:ring-0 focus:shadow-md focus:invalid:border-red-600 focus:valid:border-green-600  placeholder:TextColor"
+                                placeholder="example@gmail.com">
+
+                            <p class="invisible peer-invalid:visible absolute bottom-10 text-red-600 text-sm">
+                                ! This type of email is not valid
+                            </p>
+                            <!-- gender  -->
+                            <div class="flex items-center gap-5 mt-4">
+                                <h4 class="text-xs font-bold TextColor inline-block ">جنسیت</h4>
+                                <div class="FlexCenter gap-2">
+                                    <input type="radio"
+                                        class="h-4 w-4 cursor-pointer dark:bg-gray-500 transition-all duration-300 focus:ring-0 focus:ring-offset-0 text-violet-600"
+                                        name="gended" value="male">
+                                    <label for="male" class="text-sm">آقا</label>
+                                </div>
+                                <div class="FlexCenter gap-2">
+                                    <input type="radio"
+                                        class="h-4 w-4 cursor-pointer dark:bg-gray-500 transition-all duration-300 focus:ring-0 focus:ring-offset-0 text-violet-600"
+                                        name="gended" value="female">
+                                    <label for="male" class="text-sm">خانم</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PAYMENT METHOD  -->
+                    <div class="px-4 mb-0 flex-1 sm:px-4 TextColor">
+                        <h3 class="font-bold  mb-3">روش پرداخت</h3>
+                        <select name="payment" id="payment" 
+                            class="w-full rounded-lg h-10 dark:bg-slate-700 border-gray-300 text-sm  dark:border-gray-700 focus:border-gray-300 focus:ring-0 focus:shadow-md ">
+                            <option value="parsian">بانک پارسیان</option>
+                            <option value="maskan">بانک مسکن</option>
+                        </select>
+
+                       
+                        <!-- discount -->
+                        <h4 class="text-xs font-bold  inline-block mt-5 mb-3">از طرح های تخفیف بعدی باخبرم کن
+                        </h4>
+                        <div class="flex gap-4">
+                            <div class="FlexCenter gap-2">
+                                <input type="radio"
+                                    class="h-4 w-4 cursor-pointer  dark:bg-gray-500 transition-all duration-300 focus:ring-0 focus:ring-offset-0 text-violet-600"
+                                    name="discount" id="yes">
+                                <label for="yes" class="text-sm ">بله</label>
+                            </div>
+                            <div class="FlexCenter gap-2">
+                                <input type="radio"
+                                    class="h-4 w-4 cursor-pointer dark:bg-gray-500  transition-all duration-300 focus:ring-0 focus:ring-offset-0 text-violet-600"
+                                    name="discount" id="no">
+                                <label for="no" class="text-sm ">خیر</label>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- MODAL  -->
+                <div class="px-4 mb-4" x-data="HandleModal">
+                    <!-- MODAL BTN  -->
+                    <button @click="openModal()"
+                        class="bg-orange-400 rounded-xl FlexCenter gap-2  py-3 px-4 mt-4 w-full transition-all hover:bg-orange-500 sm:w-auto ">
+                        <span class="mb-1" x-text="(isLoadingIcon) ? 'صبر کنید' : 'مرحله بعد'"></span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden sm:block" viewBox="0 0 20 20"
+                            x-show="!isLoadingIcon" fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z"
+                                clip-rule="evenodd" />
+                        </svg>
+                        <img src="../../svg-loaders/puff.svg" class="h-7 w-7" x-cloak x-show="isLoadingIcon" alt="">
+                    </button>
+                    <!-- MODAL backdrop -->
+                    <div class="fixed bg-gray-900 bg-opacity-50 inset-0 z-10 backdrop-blur-sm" x-cloak x-show="modal"
+                        x-transition.opacity.duration.300></div>
+
+                    <!-- MODAL CONTENT  -->
+                    <div class="fixed inset-0 FlexCenter z-20" x-cloak x-show="modal"
+                        x-transition:enter="transition-all ease-in duration-300" x-transition:enter-start="top-96"
+                        x-transition:enter-end="top-0" x-transition:leave="transition-all ease-in duration-300"
+                        x-transition:leave-start="top-0" x-transition:leave-end="top-96">
+                        <div class="bg-white w-full max-w-sm sm:max-w-lg md:max-w-xl lg:max-w-3xl rounded-2xl overflow-hidden"
+                            @click.away="closeModal()">
+                            <p class="text-center p-5 text-lg dark:bg-gray-800 w-full TextColor font-bold">ویژگی های سفرتان را انتخاب کنید</p>
+                            <ul x-data="AirGroundToggle">
+                                <li class="flex justify-between even:bg-white odd:bg-gray-200 dark:even:bg-gray-500 dark:odd:bg-gray-700 px-5 text-sm py-4">
+                                    <p class="TextColor">غذا</p>
+                                    <ul class="flex gap-4">
+                                        <li class="relative ">
+                                            <input type="checkbox"
+                                                class="absolute invisible label-checked:bg-violet-700 label-checked:text-white"
+                                                id="breakfast">
+                                            <label for="breakfast"
+                                                class="border-2 cursor-pointer transition-all border-violet-700 px-3 py-1 rounded-xl  text-violet-600 dark:text-violet-300">صبحانه</label>
+                                        </li>
+                                        <li class="relative ">
+                                            <input type="checkbox"
+                                                class="absolute invisible label-checked:bg-violet-700 label-checked:text-white"
+                                                id="lunch">
+                                            <label for="lunch"
+                                                class="border-2 cursor-pointer transition-all border-violet-700 px-3 py-1 rounded-xl text-violet-700 dark:text-violet-300">ناهار</label>
+                                        </li>
+                                        <li class="relative ">
+                                            <input type="checkbox"
+                                                class="absolute invisible label-checked:bg-violet-700 label-checked:text-white"
+                                                id="dinner">
+                                            <label for="dinner"
+                                                class="border-2 cursor-pointer transition-all border-violet-700 px-3 py-1 rounded-xl text-violet-700 dark:text-violet-300">شام</label>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li class="flex justify-between even:bg-white odd:bg-gray-200 px-5 text-sm py-4 dark:even:bg-gray-500 dark:odd:bg-gray-700">
+                                    <p class="TextColor">مکان های دیدنی</p>
+                                    <ul class="flex gap-4">
+                                        <li class="relative ">
+                                            <input type="checkbox"
+                                                class="absolute invisible label-checked:bg-green-500 label-checked:text-white"
+                                                id="sport">
+                                            <label for="sport"
+                                                class="border-2 cursor-pointer transition-all border-green-500 px-3 py-1 rounded-xl text-green-500">ورزشی</label>
+                                        </li>
+                                        <li class="relative ">
+                                            <input type="checkbox"
+                                                class="absolute invisible label-checked:bg-green-500 label-checked:text-white"
+                                                id="entertainment">
+                                            <label for="entertainment"
+                                                class="border-2 cursor-pointer transition-all border-green-500 px-3 py-1 rounded-xl text-green-500">تفریحی</label>
+                                        </li>
+                                        <li class="relative ">
+                                            <input type="checkbox"
+                                                class="absolute invisible label-checked:bg-green-500 label-checked:text-white"
+                                                id="historical">
+                                            <label for="historical"
+                                                class="border-2 cursor-pointer transition-all border-green-500 px-3 py-1 rounded-xl text-green-500">تاریخی</label>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li class="flex justify-between even:bg-white odd:bg-gray-200 dark:even:bg-gray-500 dark:odd:bg-gray-700 px-5 text-sm py-4">
+                                    <p class="TextColor">
+                                        هتل
+                                        <span class="text-gray-400 text-sm">(ستاره)</span>
+                                    </p>
+                                    <ul class="flex gap-4">
+                                        <li class="relative ">
+                                            <input type="radio" name="hotel"
+                                                class="absolute invisible label-checked:bg-yellow-500 label-checked:text-white"
+                                                id="Onestar">
+                                            <label for="Onestar"
+                                                class="border-2 cursor-pointer transition-all border-yellow-500 px-5 py-1 rounded-xl TextColor ">3</label>
+                                        </li>
+                                        <li class="relative ">
+                                            <input type="radio" name="hotel"
+                                                class="absolute invisible label-checked:bg-yellow-500 label-checked:text-white"
+                                                id="Twostar">
+                                            <label for="Twostar"
+                                                class="border-2 cursor-pointer transition-all border-yellow-500 px-5 py-1 rounded-xl TextColor ">4</label>
+                                        </li>
+                                        <li class="relative ">
+                                            <input type="radio" name="hotel"
+                                                class="absolute invisible label-checked:bg-yellow-500 label-checked:text-white"
+                                                id="Threestar">
+                                            <label for="Threestar"
+                                                class="border-2 cursor-pointer transition-all border-yellow-500 px-5 py-1 rounded-xl TextColor ">5</label>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li
+                                    class="flex justify-between items-center even:bg-white odd:bg-gray-200 dark:even:bg-gray-500 dark:odd:bg-gray-700 px-5 text-sm py-2">
+                                    <p class="TextColor">
+                                        انتقال
+                                    </p>
+                                    <!-- switchToggle  -->
+                                    <ul class="relative border border-purple-600 flex items-center rounded-full">
+                                        <li class="px-4 py-2 rounded-full relative z-10">
+                                            <input type="radio" class="absolute invisible" name="transfer" id="ground">
+                                            <label class="cursor-pointer transition-all" for="ground"
+                                                @click="switchRight()"
+                                                :class="(!air) ? 'text-white' : 'TextColor'">زمینی</label>
+
+                                        </li>
+                                        <li class="px-4 py-2 rounded-full relative z-10">
+                                            <input type="radio" class="absolute invisible" name="transfer" id="air"
+                                                checked>
+                                            <label class="cursor-pointer transition-all" for="air" @click="switchLeft()"
+                                                :class="(air) ? 'text-white' : 'TextColor'">هوایی</label>
+                                        </li>
+
+                                        <div class="absolute transition-all bg-purple-600 rounded-full h-10 w-[70px]"
+                                            x-bind:class="(air) ? 'right-[66px]' : 'right-[-2px]'"></div>
+                                    </ul>
+                                </li>
+
+                                <li class="flex justify-between even:bg-white odd:bg-gray-200 dark:even:bg-gray-500 dark:odd:bg-gray-700 px-5 text-sm py-4"
+                                    :class="(air) ? 'opacity-50 dark:opacity-80 select-none pointer-events-none' : ''">
+                                    <p class="TextColor">
+                                        روش انتقال
+                                    </p>
+                                    <ul class="flex gap-4">
+                                        <li class="relative">
+                                            <input type="radio" name="GroundTransfer"
+                                                class="absolute invisible label-checked:bg-red-600 label-checked:text-white"
+                                                id="train">
+                                            <label for="train"
+                                                class="border-2 cursor-pointer transition-all border-red-600 text-red-600  px-5 py-1 rounded-xl ">قطار</label>
+                                        </li>
+                                        <li class="relative ">
+                                            <input type="radio" name="GroundTransfer"
+                                                class="absolute invisible label-checked:bg-red-600 label-checked:text-white"
+                                                id="bus">
+                                            <label for="bus"
+                                                class="border-2 cursor-pointer transition-all border-red-600 text-red-600 px-5 py-1 rounded-xl ">اتوبوس</label>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <!-- submitBtn and open Alert -->
+                                <div>
+                                    <div class="p-4 dark:bg-gray-700">
+                                        <button type="button" @click="handleAlert()"
+                                            class="FlexCenter w-full text-white text-lg bg-red-500 rounded-full py-3 hover:bg-red-600 focus:ring-2 ring-red-300">
+                                            اعمال
+                                        </button>
+                                    </div>
+
+                                    <!-- ALERT  -->
+                                    <div class="fixed top-10 right-10  w-auto rounded-lg overflow-hidden "
+                                        x-show="alert" x-transition:enter="transition-all ease-in duration-300"
+                                        x-transition:enter-start="top-10 -right-96"
+                                        x-transition:enter-end="top-10 right-10"
+                                        x-transition:leave="transition-all ease-in duration-300"
+                                        x-transition:leave-start="top-10 right-10"
+                                        x-transition:leave-end="top-10 -right-96">
+                                        <p class="text-slate-100 bg-emerald-500 w-full py-6 px-10 font-bold text-sm">
+                                            اطلاعات شما دریافت شد
+                                        </p>
+                                        <!-- PROGRESSBAR -->
+                                        <div class="w-full bg-red-300 h-2">
+                                            <div class="w-10 bg-red-600 h-full absolute right-0 progressBar"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </ul>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- table -->
+        <section class="mt-10 mb-20 container mx-auto px-4">
+            <!-- TITLE -->
+            <div class="hidden lg:flex justify-between text-xs TextColor px-4 mb-4">
+                <p>نام شرکت</p>
+                <div class="flex flex-row  gap-36 ml-8 justify-between font-bold ">
+                    <p>مقصد</p>
+                    <p>هتل</p>
+                    <p>مترجم</p>
+                </div>
+                <p>اقدامات</p>
+            </div>
+            <!-- CARDS -->
+            <div class="flex flex-col gap-4">
+                <!-- card -->
+                <div class="bg-white dark:bg-gray-900 border border-slate-300 dark:border-gray-600 rounded-lg">
+                    <ul class="p-4 flex flex-col gap-4 lg:flex-row lg:justify-between lg:items-center TextColor">
+                        <li class="FlexCenter flex-col gap-4 lg:flex-row">
+                            <!-- prof-img  -->
+                            <div class="relative w-12 h-12 rounded-full ">
+                                <img src="../img/fly.jpg" class="w-full h-full rounded-full" alt="">
+                                <span
+                                    class="absolute left-0 bottom-0 animate-pulse bg-emerald-600  border-2 border-gray-200 h-4 w-4 rounded-full"></span>
+                            </div>
+                            <!-- DESC -->
+                            <div class="text-center">
+                                <p class="text-sm">فلایتیو</p>
+                                <p class="text-xs ">همه روزه</p>
+                            </div>
+                        </li>
+                        <div class="flex flex-col gap-4 justify-center lg:flex-row lg:justify-between lg:w-96 lg:mr-5">
+                            <li class="FlexBetween text-sm TextColor">
+                                <span class="font-bold lg:hidden">مقصد</span>
+                                <span>پاریس</span>
+                            </li>
+                            <li class="FlexBetween text-sm TextColor">
+                                <span class="font-bold lg:hidden">هتل</span>
+                                <span>Hotel republique 9</span>
+                            </li>
+                            <li class="FlexBetween text-sm TextColor">
+                                <span class="font-bold lg:hidden">مترجم</span>
+                                <span class="rounded-full bg-emerald-100 px-4 pt-1 pb-2 text-green-600 dark:text-white dark:bg-emerald-600">دارد</span>
+                            </li>
+                        </div>
+                        <div class="relative lg:flex lg:gap-4">
+                            <li class="FlexBetween text-sm TextColor">
+                                <button type="button"
+                                    class="text-violet-600 dark:text-violet-400  transition-all border border-violet-800 dark:border-violet-400 rounded-lg w-full py-2 hover:bg-violet-800 dark:hover:bg-violet-500  hover:text-white dark:hover:text-white focus:ring-2 ring-violet-400 lg:px-5">
+                                    ثبت نام
+                                </button>
+                            </li>
+
+                            <!-- SAVE -->
+                            <li
+                                class="bg-gray-200  dark:bg-gray-700 rounded-full absolute px-3 py-3 -top-[14.5rem] cursor-pointer lg:relative lg:inline-block lg:top-0 group">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-500 dark:text-white " fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
+                                </svg>
+                                <span
+                                    class="absolute hidden invisible lg:block text-xs opacity-0 bg-violet-600 text-white rounded-full px-2 py-1 transition-all top-0 -left-[3px] group-hover:visible group-hover:opacity-100 group-hover:-top-7">
+                                    ذخیره
+                                </span>
+                            </li>
+                        </div>
+
+                    </ul>
+                </div>
+                <!-- card -->
+                <div class="bg-white dark:bg-gray-900 border border-slate-300 dark:border-gray-600 rounded-lg">
+                    <ul class="p-4 flex flex-col gap-4 lg:flex-row lg:justify-between lg:items-center TextColor">
+                        <li class="FlexCenter flex-col gap-4 lg:flex-row">
+                            <!-- prof-img  -->
+                            <div class="relative w-12 h-12 rounded-full ">
+                                <img src="../img/fly2.jpg" class="w-full h-full rounded-full" alt="">
+                                <span
+                                    class="absolute left-0 bottom-0 animate-pulse bg-red-600 border-2 border-gray-200 h-4 w-4 rounded-full"></span>
+                            </div>
+                            <!-- DESC -->
+                            <div class="text-center">
+                                <p class="text-sm">فلایتیو</p>
+                                <p class="text-xs text-gray-500">همه روزه</p>
+                            </div>
+                        </li>
+
+                        <div class="flex flex-col gap-4 justify-center lg:flex-row lg:justify-between lg:w-96 lg:mr-5">
+                            <li class="FlexBetween text-sm TextColor">
+                                <span class="font-bold lg:hidden">مقصد</span>
+                                <span>پاریس</span>
+                            </li>
+                            <li class="FlexBetween text-sm TextColor">
+                                <span class="font-bold lg:hidden">هتل</span>
+                                <span>Hotel republique 9</span>
+                            </li>
+                            <li class="FlexBetween text-sm TextColor">
+                                <span class="font-bold lg:hidden">مترجم</span>
+                                <span class="rounded-full bg-emerald-100 px-4 pt-1 pb-2 text-green-600 dark:text-white dark:bg-emerald-600">دارد</span>
+                            </li>
+                        </div>
+
+
+                        <div class="relative lg:flex lg:gap-4">
+                            <li class="FlexBetween text-sm TextColor">
+                                <button type="button"
+                                    class="text-violet-600 dark:text-violet-400  transition-all border border-violet-800 dark:border-violet-400 rounded-lg w-full py-2 hover:bg-violet-800 dark:hover:bg-violet-500  hover:text-white dark:hover:text-white focus:ring-2 ring-violet-400 lg:px-5">
+                                    ثبت نام
+                                </button>
+                            </li>
+
+                            <!-- SAVE -->
+                            <li
+                                class="bg-gray-200 dark:bg-gray-700 rounded-full absolute px-3 py-3 -top-[14.5rem] cursor-pointer lg:relative lg:inline-block lg:top-0 group">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-500 dark:text-white" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
+                                </svg>
+                                <span
+                                    class="absolute hidden invisible lg:block text-xs opacity-0 bg-violet-600 text-white rounded-full px-2 py-1 transition-all top-0 -left-[3px] group-hover:visible group-hover:opacity-100 group-hover:-top-7">
+                                    ذخیره
+                                </span>
+                            </li>
+                        </div>
+
+                    </ul>
+                </div>
+                <!-- card -->
+                <div class="bg-white dark:bg-gray-900 border border-slate-300 dark:border-gray-600 rounded-lg">
+                    <ul class="p-4 flex flex-col gap-4 lg:flex-row lg:justify-between lg:items-center TextColor">
+                        <li class="FlexCenter flex-col gap-4 lg:flex-row">
+                            <!-- prof-img  -->
+                            <div class="relative w-12 h-12 rounded-full ">
+                                <img src="../img/fly.jpg" class="w-full h-full rounded-full" alt="">
+                                <span
+                                    class="absolute left-0 bottom-0 animate-pulse bg-red-600 border-2 border-gray-200 h-4 w-4 rounded-full"></span>
+                            </div>
+                            <!-- DESC -->
+                            <div class="text-center">
+                                <p class="text-sm">فلایتیو</p>
+                                <p class="text-xs text-gray-500">همه روزه</p>
+                            </div>
+                        </li>
+                        <div class="flex flex-col gap-4 justify-center lg:flex-row lg:justify-between lg:w-96 lg:mr-5">
+                            <li class="FlexBetween text-sm TextColor">
+                                <span class="font-bold lg:hidden">مقصد</span>
+                                <span>پاریس</span>
+                            </li>
+                            <li class="FlexBetween text-sm TextColor">
+                                <span class="font-bold lg:hidden">هتل</span>
+                                <span>Hotel republique 9</span>
+                            </li>
+                            <li class="FlexBetween text-sm TextColor">
+                                <span class="font-bold lg:hidden">مترجم</span>
+                                <span class="rounded-full bg-red-100 px-4 pt-1 pb-2 text-red-600 dark:text-white dark:bg-red-600">ندارد</span>
+                            </li>
+                        </div>
+                        <div class="relative lg:flex lg:gap-4">
+                            <li class="FlexBetween text-sm TextColor">
+                                <button type="button"
+                                    class="text-violet-600 dark:text-violet-400  transition-all border border-violet-800 dark:border-violet-400 rounded-lg w-full py-2 hover:bg-violet-800 dark:hover:bg-violet-500  hover:text-white dark:hover:text-white focus:ring-2 ring-violet-400 lg:px-5">
+                                    ثبت نام
+                                </button>
+                            </li>
+                            <!-- SAVE -->
+                            <li
+                                class="bg-gray-200 dark:bg-gray-700 rounded-full absolute px-3 py-3 -top-[14.5rem] cursor-pointer lg:relative lg:inline-block lg:top-0 group">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-500 dark:text-white" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
+                                </svg>
+                                <span
+                                    class="absolute hidden invisible lg:block text-xs opacity-0 bg-violet-600 text-white rounded-full px-2 py-1 transition-all top-0 -left-[3px] group-hover:visible group-hover:opacity-100 group-hover:-top-7">
+                                    ذخیره
+                                </span>
+                            </li>
+                        </div>
+
+                    </ul>
+                </div>
+
+
+            </div>
+        </section>
+
+        <!-- bottom nav  -->
+        <div
+            class="fixed inset-x-0 bottom-0 h-16 w-full z-10 bg-white dark:bg-gray-900 border-t border-gray-300 flex justify-around items-center BottomNav lg:hidden TextColor">
+            <a href="#" class="flex flex-col justify-center items-center gap-1  flex-1 active">
+                <!-- icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path
+                        d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+                </svg>
+                <span class="text-xs">خانه</span>
+            </a>
+            <a href="#" class="flex flex-col gap-1 justify-center items-center flex-1 ">
+                <!-- icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
+                    <path fill-rule="evenodd"
+                        d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z"
+                        clip-rule="evenodd" />
+                </svg>
+                <span class="text-xs">لحظه آخری</span>
+            </a>
+            <a href="#" class="flex flex-col gap-1 justify-center items-center flex-1 ">
+                <!-- icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd"
+                        d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z"
+                        clip-rule="evenodd" />
+                </svg>
+                <span class="text-xs">خروج</span>
+            </a>
+
+        </div>
+
+    </main>
+
+
+    <script src="../scripts/swiper-bundle.min.js"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="../scripts/main.js"></script>
+</body>
+
+</html>
